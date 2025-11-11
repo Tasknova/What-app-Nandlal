@@ -9,19 +9,12 @@ interface ClientUser {
   phone_number: string;
   whatsapp_api_key: string | null;
   whatsapp_number: string | null;
-  created_by: string;
   created_at: string;
   updated_at: string;
   last_login: string | null;
   is_active: boolean;
-  subscription_plan: string;
-  subscription_expires_at: string | null;
   user_id: string | null;
-  organization_id: string | null;
-  role_id: string | null;
   client_id: string | null;
-  mem_password: string | null;
-  is_primary_user: boolean | null;
   name: string | null;
 }
 
@@ -135,12 +128,12 @@ export const ClientAuthProvider = ({ children }: { children: ReactNode }) => {
       // Clear any existing admin session when client logs in
       localStorage.removeItem('admin_session');
       
-      // Authenticate client using email OR user_id and mem_password from client_users table
+      // Authenticate client using email OR user_id and password from client_users table
       const { data, error } = await supabase
         .from('client_users')
         .select('*')
         .or(`email.eq.${identifier},user_id.eq.${identifier}`)
-        .eq('mem_password', password)
+        .eq('password', password)
         .eq('is_active', true)
         .single();
 

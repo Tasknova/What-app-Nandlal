@@ -1,6 +1,5 @@
-import { MessageSquare, Send, Users, FileText, Settings, BarChart3, UserPlus, Shield, HelpCircle, LayoutTemplate, Workflow, Clock, Upload, Layers, Target, LogOut, User, Bell, ChevronRight, Image, FileBarChart } from "lucide-react";
+import { MessageSquare, Send, Users, FileText, Settings, BarChart3, HelpCircle, LayoutTemplate, Target, LogOut, User, Image, FileBarChart, ChevronRight } from "lucide-react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { useClientAuth } from '@/hooks/useClientAuth';
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -65,119 +64,48 @@ const clientItems = [
   },
 ];
 
-const adminItems = [
-  { 
-    title: "Admin Dashboard", 
-    url: "/admin", 
-    icon: Shield
-  },
-  { 
-    title: "Client Management", 
-    url: "/admin/clients", 
-    icon: UserPlus
-  },
-  { 
-    title: "Template Management", 
-    url: "/admin/templates", 
-    icon: LayoutTemplate
-  },
-  { 
-    title: "Reports", 
-    url: "/reports", 
-    icon: FileBarChart
-  },
-
-  { 
-    title: "User Management", 
-    url: "/users", 
-    icon: Users
-  },
-  { 
-    title: "Support", 
-    url: "/support", 
-    icon: HelpCircle
-  },
-];
 
 export function AppSidebar() {
   const location = useLocation();
   const navigate = useNavigate();
   const currentPath = location.pathname;
-  const { admin, signOut: adminLogout, isAuthenticated: isAdminAuthenticated } = useAdminAuth();
-  const { client, signOut: clientLogout, isAuthenticated: isClientAuthenticated } = useClientAuth();
+  const { client, signOut: clientLogout } = useClientAuth();
 
-  // Determine user type based on authentication state and current route
-  const isAdminRoute = currentPath.startsWith('/admin') || currentPath === '/users';
-  
-  // More explicit user type detection
-  let isAdmin = false;
-  let isClient = false;
-  
-  if (isAdminRoute && isAdminAuthenticated && admin) {
-    isAdmin = true;
-  } else if (!isAdminRoute && isClientAuthenticated && client) {
-    isClient = true;
-  }
-  
-  // Fallback: if we're on a client route and have client auth, show client interface
-  if (!isAdmin && !isClient && isClientAuthenticated && client) {
-    isClient = true;
-  }
 
   const handleLogout = () => {
-    if (isAdmin) {
-      adminLogout();
-    } else if (isClient) {
-      clientLogout();
-    }
+    clientLogout();
     navigate('/auth');
   };
 
   const getUserInitials = () => {
-    if (isAdmin && admin) {
-      return admin.full_name ? admin.full_name.split(' ').map(n => n[0]).join('').toUpperCase() : 'A';
-    }
-    if (isClient && client) {
-      return client.business_name ? client.business_name.split(' ').map(n => n[0]).join('').toUpperCase() : 'C';
-    }
-    return 'U';
+    return "NJ";
   };
 
   const getUserName = () => {
-    if (isAdmin && admin) {
-      return admin.full_name || 'Admin User';
-    }
-    if (isClient && client) {
-      return client.business_name || 'Client User';
-    }
-    return 'User';
+    return "Nandlal Jewellers";
   };
 
   const getUserEmail = () => {
-    if (isAdmin && admin) {
-      return admin.email || 'admin@example.com';
-    }
-    if (isClient && client) {
-      return client.email || 'client@example.com';
-    }
-    return 'user@example.com';
+    return client?.email || "contact@nandlaljewellers.com";
   };
 
   const getUserRole = () => {
-    if (isAdmin) return 'Administrator';
-    if (isClient) return 'Client';
-    return 'User';
+    return 'Business Owner';
   };
 
   return (
     <Sidebar className="border-r border-border/50 bg-gradient-to-br from-background via-background to-muted/30 shadow-xl w-64 min-w-64 h-screen flex flex-col">
-      <SidebarHeader className="border-b border-border/50 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 p-4 shadow-sm">
-        <div className="flex items-center justify-center w-full">
+      <SidebarHeader className="border-b border-border/50 bg-gradient-to-r from-amber-50 via-yellow-50 to-amber-50 p-4 shadow-sm">
+        <div className="flex items-center gap-3 justify-center w-full">
           <img 
-            src="/logo2.png" 
-            alt="Tasknova Logo" 
-            className="h-12 w-full object-contain"
+            src="/logo.png" 
+            alt="Nandlal Jewellers" 
+            className="h-12 w-12 object-contain"
           />
+          <div>
+            <h2 className="text-lg font-bold text-gray-900">Nandlal Jewellers</h2>
+            <p className="text-xs text-gray-600">WhatsApp Business</p>
+          </div>
         </div>
       </SidebarHeader>
 
@@ -206,13 +134,13 @@ export function AppSidebar() {
         </div>
 
                  <SidebarGroup>
-           <SidebarGroupLabel className="text-xs font-semibold text-muted-foreground/80 uppercase tracking-wider px-3 mb-3">
-             {isAdmin ? 'Administration' : 'Navigation'}
-           </SidebarGroupLabel>
+          <SidebarGroupLabel className="text-xs font-semibold text-muted-foreground/80 uppercase tracking-wider px-3 mb-3">
+            Navigation
+          </SidebarGroupLabel>
 
           <SidebarGroupContent>
             <SidebarMenu>
-              {(isClient ? clientItems : adminItems).map((item) => (
+              {clientItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <NavLink 

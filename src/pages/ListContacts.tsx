@@ -789,7 +789,7 @@ export default function ListContacts() {
               <div className="text-sm text-muted-foreground">Tagged</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600">
+              <div className="text-2xl font-bold text-amber-600">
                 {new Date(contactList.created_at).toLocaleDateString()}
               </div>
               <div className="text-sm text-muted-foreground">Created</div>

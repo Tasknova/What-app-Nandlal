@@ -133,7 +133,7 @@ export const useCampaignReports = () => {
     }
 
     // Check if we have the required credentials
-    if (!client.mem_password || !client.whatsapp_number) {
+    if (!client.password || !client.whatsapp_number) {
       console.error('Missing required credentials for API call');
       toast({
         title: "Error",

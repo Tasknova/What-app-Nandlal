@@ -13,7 +13,6 @@ import { format } from 'date-fns';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useClientAuth } from '@/hooks/useClientAuth';
-import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { cn } from '@/lib/utils';
 
 interface ScheduledMessage {
@@ -51,12 +50,10 @@ const ScheduledMessages = () => {
     scheduled_for: new Date(),
   });
   const { client } = useClientAuth();
-  const { admin } = useAdminAuth();
   const { toast } = useToast();
   
-  // Determine current user
-  const user = client || admin;
-  const isAdmin = !!admin;
+  // Current user
+  const user = client;
 
   useEffect(() => {
     fetchScheduledMessages();

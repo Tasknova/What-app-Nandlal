@@ -4,54 +4,36 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Settings, Phone, Key, Save, Check, User, Building2, MessageSquare, Shield } from 'lucide-react';
+import { Settings, Phone, Key, Save, Check, User, Building2, MessageSquare } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useClientAuth } from '@/hooks/useClientAuth';
-import { useAdminAuth } from '@/hooks/useAdminAuth';
 
 const SettingsPage = () => {
-  const [apiKey, setApiKey] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [businessName, setBusinessName] = useState('');
+  const [userId, setUserId] = useState('nandlalwa');
+  const [password, setPassword] = useState('Nandlal@12');
+  const [apiKey, setApiKey] = useState('6c690e3ce94a97dd3bc5349d215f293bae88963c');
+  const [phoneNumber, setPhoneNumber] = useState('919370853371');
+  const [businessName, setBusinessName] = useState('Nandlal Jewellers');
   const [loading, setLoading] = useState(false);
-  const [loadingProfile, setLoadingProfile] = useState(true);
+  const [loadingProfile, setLoadingProfile] = useState(false);
   const [showApiKey, setShowApiKey] = useState(false);
   const { toast } = useToast();
   const { client } = useClientAuth();
-  const { admin } = useAdminAuth();
   
-  // Determine current user and role
-  const user = client || admin;
-  const isAdmin = !!admin;
+  const user = client;
 
   // Load user profile and client data on mount
   useEffect(() => {
     const loadData = async () => {
-      if (!user) return;
+      if (!client) return;
 
       try {
-        // Load profile data
-        const { data: profile, error } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq(client ? 'client_id' : 'user_id', user.id)
-          .single();
-
-        if (error && error.code !== 'PGRST116') { // PGRST116 is "not found" error
-          console.error('Error loading profile:', error);
-        } else if (profile) {
-          setBusinessName(profile.business_name || '');
-        } else {
-          // No profile found, set default values
-          setBusinessName(client?.business_name || admin?.full_name || '');
-        }
-
         // Load client data for integrations
-        if (client) {
-          setApiKey(client.whatsapp_api_key || '');
-          setPhoneNumber(client.whatsapp_number || '');
-        }
+        if (client.whatsapp_api_key) setApiKey(client.whatsapp_api_key);
+        if (client.whatsapp_number) setPhoneNumber(client.whatsapp_number);
+        if (client.user_id) setUserId(client.user_id);
+        if (client.password) setPassword(client.password);
       } catch (error) {
         console.error('Error loading data:', error);
       } finally {
@@ -60,42 +42,22 @@ const SettingsPage = () => {
     };
 
     loadData();
-  }, [user, client]);
+  }, [client]);
 
   const handleSaveSettings = async () => {
-    if (!user) return;
+    if (!client) return;
 
     setLoading(true);
     try {
-      if (!user) {
-        throw new Error('User not found');
-      }
-
-      // Try to update existing profile first
-      let { error } = await supabase
-        .from('profiles')
+      // Update client_users table
+      const { error } = await supabase
+        .from('client_users')
         .update({
           business_name: businessName,
         })
-        .eq(client ? 'client_id' : 'user_id', user.id);
+        .eq('id', client.id);
 
-      // If no profile exists, create one
-      if (error && error.code === 'PGRST116') {
-        const { error: insertError } = await supabase
-          .from('profiles')
-          .insert({
-            user_id: user.id,
-            client_id: client ? user.id : null,
-            email: client?.email || admin?.email || '',
-            business_name: businessName,
-            whatsapp_api_key: '',
-            whatsapp_number: ''
-          });
-        
-        if (insertError) throw insertError;
-      } else if (error) {
-        throw error;
-      }
+      if (error) throw error;
 
       toast({
         title: "Settings saved successfully!",
@@ -202,13 +164,13 @@ const SettingsPage = () => {
                      <User className="h-4 w-4 text-primary" />
                      Email Address
                    </Label>
-                   <Input
-                     id="email"
-                     type="email"
-                     value={client?.email || admin?.email || ''}
-                     disabled
-                     className="h-12 border-2 border-gray-200 bg-gray-50"
-                   />
+                  <Input
+                    id="email"
+                    type="email"
+                    value={client?.email || ''}
+                    disabled
+                    className="h-12 border-2 border-gray-200 bg-gray-50"
+                  />
                    <p className="text-xs text-muted-foreground">
                      Contact support to change your email address
                    </p>
@@ -263,53 +225,82 @@ const SettingsPage = () => {
                    Your WhatsApp API credentials and integration settings
                  </CardDescription>
                </CardHeader>
-               <CardContent className="space-y-6 p-6">
-                 <div className="space-y-2">
-                   <Label htmlFor="apiKey" className="text-sm font-medium flex items-center gap-2">
-                     <Shield className="h-4 w-4 text-primary" />
-                     API Key
-                   </Label>
-                   <div className="flex gap-2">
-                     <Input
-                       id="apiKey"
-                       type={showApiKey ? "text" : "password"}
-                       placeholder="Your WhatsApp API key"
-                       value={showApiKey ? apiKey : '•'.repeat(apiKey.length)}
-                       disabled
-                       className="h-12 border-2 border-gray-200 bg-gray-50 flex-1"
-                     />
-                     <Button
-                       variant="outline"
-                       size="sm"
-                       onClick={() => setShowApiKey(!showApiKey)}
-                       className="h-12 px-4"
-                     >
-                       {showApiKey ? 'Hide' : 'View'}
-                     </Button>
-                     <Button
-                       variant="outline"
-                       size="sm"
-                       onClick={handleCopyApiKey}
-                       className="h-12 px-4"
-                     >
-                       Copy
-                     </Button>
-                   </div>
-                   <p className="text-xs text-muted-foreground">
-                     API key is managed by your administrator
-                   </p>
-                 </div>
-                 
-                 <div className="space-y-2">
-                   <Label htmlFor="phoneNumber" className="text-sm font-medium flex items-center gap-2">
-                     <Phone className="h-4 w-4 text-primary" />
-                     WhatsApp Business Number
-                   </Label>
-                   <Input
-                     id="phoneNumber"
-                     type="tel"
-                     placeholder="Your WhatsApp number"
-                     value={phoneNumber}
+              <CardContent className="space-y-6 p-6">
+                <div className="space-y-2">
+                  <Label htmlFor="userId" className="text-sm font-medium flex items-center gap-2">
+                    <User className="h-4 w-4 text-primary" />
+                    User ID
+                  </Label>
+                  <Input
+                    id="userId"
+                    type="text"
+                    placeholder="Enter User ID"
+                    value={userId}
+                    onChange={(e) => setUserId(e.target.value)}
+                    className="h-12 border-2 border-gray-200 focus:border-primary transition-all duration-200"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Your theultimate.io user ID
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-sm font-medium flex items-center gap-2">
+                    <Key className="h-4 w-4 text-primary" />
+                    Password
+                  </Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Enter Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="h-12 border-2 border-gray-200 focus:border-primary transition-all duration-200"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Your theultimate.io account password
+                  </p>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="apiKey" className="text-sm font-medium flex items-center gap-2">
+                    <Key className="h-4 w-4 text-primary" />
+                    API Key
+                  </Label>
+                  <div className="flex gap-2">
+                    <Input
+                      id="apiKey"
+                      type={showApiKey ? "text" : "password"}
+                      placeholder="Your WhatsApp API key"
+                      value={apiKey}
+                      onChange={(e) => setApiKey(e.target.value)}
+                      className="h-12 border-2 border-gray-200 focus:border-primary transition-all duration-200 flex-1"
+                    />
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setShowApiKey(!showApiKey)}
+                      className="h-12 px-4"
+                    >
+                      {showApiKey ? 'Hide' : 'View'}
+                    </Button>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Your theultimate.io WhatsApp API key
+                  </p>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="phoneNumber" className="text-sm font-medium flex items-center gap-2">
+                    <Phone className="h-4 w-4 text-primary" />
+                    WhatsApp Business Number
+                  </Label>
+                  <Input
+                    id="phoneNumber"
+                    type="tel"
+                    placeholder="Enter WhatsApp number (with country code)"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                      disabled
                      className="h-12 border-2 border-gray-200 bg-gray-50"
                    />

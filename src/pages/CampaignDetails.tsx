@@ -684,7 +684,7 @@ export default function CampaignDetails() {
               <div className="text-sm text-muted-foreground">Failed</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600">
+              <div className="text-2xl font-bold text-amber-600">
                 {metrics.read}
               </div>
               <div className="text-sm text-muted-foreground">Read</div>
@@ -715,7 +715,7 @@ export default function CampaignDetails() {
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div 
-                  className="bg-purple-600 h-2 rounded-full transition-all duration-300"
+                  className="bg-amber-600 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${metrics.readRate}%` }}
                 ></div>
               </div>

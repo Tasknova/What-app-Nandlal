@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Eye, EyeOff, Users, ArrowRight, Crown } from 'lucide-react';
+import { Eye, EyeOff, Users, ArrowRight } from 'lucide-react';
 import { useClientAuth } from '@/hooks/useClientAuth';
 import authHero from '@/assets/auth-hero.jpg';
 
@@ -41,31 +41,20 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
-      {/* Admin Login Button - Top Right Corner */}
-      <Button
-        variant="ghost"
-        size="sm"
-        className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
-        onClick={() => navigate('/admin-auth')}
-      >
-        <Crown className="h-4 w-4 mr-2" />
-        Admin Login
-      </Button>
-
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left side - Hero Image */}
         <div className="hidden lg:block">
           <div className="relative">
             <img 
               src={authHero} 
-              alt="WhatsApp Business Hub" 
+              alt="Nandlal Jewellers" 
               className="w-full h-auto rounded-2xl shadow-2xl"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
             <div className="absolute bottom-6 left-6 text-white">
-              <h2 className="text-3xl font-bold mb-2">WhatsApp Business Hub</h2>
-              <p className="text-lg opacity-90">Manage your WhatsApp campaigns with ease</p>
+              <h2 className="text-3xl font-bold mb-2">Nandlal Jewellers</h2>
+              <p className="text-lg opacity-90">WhatsApp Business Management System</p>
             </div>
           </div>
         </div>
@@ -74,21 +63,21 @@ const Auth = () => {
         <div className="space-y-6">
           {/* Header */}
           <div className="text-center lg:text-left">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-            <p className="text-lg text-gray-600">Sign in to your WhatsApp Business Hub</p>
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">Welcome to Nandlal Jewellers</h1>
+            <p className="text-lg text-gray-600">Sign in to manage your WhatsApp campaigns</p>
           </div>
 
           {/* Login Form */}
           <Card className="w-full">
             <CardHeader className="text-center">
-              <div className="flex items-center justify-center mb-4 text-blue-600">
-                <div className="p-3 rounded-full bg-blue-100">
+              <div className="flex items-center justify-center mb-4 text-amber-600">
+                <div className="p-3 rounded-full bg-amber-100">
                   <Users className="h-6 w-6" />
                 </div>
               </div>
-              <CardTitle className="text-2xl font-bold">Client Login</CardTitle>
+              <CardTitle className="text-2xl font-bold">Staff Login</CardTitle>
               <CardDescription>
-                Sign in with your email and password
+                Sign in with your credentials to access the system
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -152,7 +141,7 @@ const Auth = () => {
               </form>
               
               <div className="mt-6 text-center text-sm text-muted-foreground">
-                <p>Don't have an account? Contact your administrator to get access.</p>
+                <p>Need help? Contact your IT administrator for assistance.</p>
               </div>
             </CardContent>
           </Card>

@@ -17,31 +17,31 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 263 70% 50%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 43 85% 55%;
+    --primary-foreground: 30 10% 10%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 45 90% 96%;
+    --secondary-foreground: 30 10% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 45 90% 96%;
+    --muted-foreground: 30 10% 50%;
 
-    --accent: 263 70% 50%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 43 85% 55%;
+    --accent-foreground: 30 10% 10%;
 
-    /* Purple gradient colors */
-    --purple-start: 263 70% 50%;
-    --purple-mid: 263 70% 55%;
-    --purple-end: 263 70% 65%;
-    --purple-light: 263 70% 95%;
-    --purple-dark: 263 70% 35%;
+    /* Golden gradient colors */
+    --golden-start: 43 85% 55%;
+    --golden-mid: 43 85% 60%;
+    --golden-end: 43 85% 70%;
+    --golden-light: 43 90% 95%;
+    --golden-dark: 43 85% 40%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 263 70% 50%;
+    --border: 45 30% 88%;
+    --input: 45 30% 88%;
+    --ring: 43 85% 55%;
 
     --radius: 0.5rem;
 
@@ -70,12 +70,12 @@ All colors MUST be HSL.
     --info-dark: 217 91% 45%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(263 70% 50%), hsl(263 70% 60%));
+    --gradient-primary: linear-gradient(135deg, hsl(43 85% 55%), hsl(43 85% 65%));
     --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 55%));
     --gradient-error: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 70%));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
-    --gradient-purple: linear-gradient(135deg, hsl(263 70% 50%), hsl(263 70% 65%));
-    --gradient-purple-dark: linear-gradient(135deg, hsl(263 70% 35%), hsl(263 70% 50%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(45 90% 98%));
+    --gradient-golden: linear-gradient(135deg, hsl(43 85% 55%), hsl(43 85% 70%));
+    --gradient-golden-dark: linear-gradient(135deg, hsl(43 85% 40%), hsl(43 85% 55%));
 
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
@@ -85,14 +85,14 @@ All colors MUST be HSL.
     --shadow-success: 0 4px 14px 0 hsl(142 71% 45% / 0.25);
     --shadow-error: 0 4px 14px 0 hsl(0 84% 60% / 0.25);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 263 70% 50%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 263 70% 50%;
+    --sidebar-background: 45 90% 98%;
+    --sidebar-foreground: 30 5% 26%;
+    --sidebar-primary: 43 85% 55%;
+    --sidebar-primary-foreground: 30 10% 10%;
+    --sidebar-accent: 45 85% 95%;
+    --sidebar-accent-foreground: 30 10% 10%;
+    --sidebar-border: 45 30% 88%;
+    --sidebar-ring: 43 85% 55%;
   }
 
   .dark {
@@ -191,13 +191,13 @@ All colors MUST be HSL.
     background-clip: text;
   }
 
-  .purple-gradient-bg {
-    background: var(--gradient-purple);
+  .golden-gradient-bg {
+    background: var(--gradient-golden);
     position: relative;
     overflow: hidden;
   }
 
-  .purple-gradient-bg::before {
+  .golden-gradient-bg::before {
     content: '';
     position: absolute;
     top: 0;
