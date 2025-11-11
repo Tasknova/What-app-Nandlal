@@ -1,0 +1,34 @@
+project_id = "vvpamvhqdyanomqvtmiz"
+
+[functions.send-whatsapp-message]
+verify_jwt = false
+
+[functions.process-scheduled-campaigns]
+verify_jwt = false
+
+[functions.whatsapp-webhook]
+verify_jwt = false
+
+[functions.test-basic]
+verify_jwt = false
+
+[functions.test-simple]
+verify_jwt = false
+
+[functions.test-static]
+verify_jwt = false
+
+[functions.test-db]
+verify_jwt = false
+
+[functions.test-env]
+verify_jwt = false
+
+[functions.test-db-anon]
+verify_jwt = false
+
+[functions.test-import]
+verify_jwt = false
+
+[functions.test-import-npm]
+verify_jwt = false

@@ -1,0 +1,1 @@
+UPDATE profiles SET whatsapp_number = '9822040676' WHERE user_id = '424e18bb-b098-48a7-85d9-f1515f25ec8e';

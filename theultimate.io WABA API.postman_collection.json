@@ -1,0 +1,5251 @@
+{
+	"info": {
+		"_postman_id": "6115bb4d-4079-46cf-ba83-fba9b4c3d9cd",
+		"name": "theultimate.io WABA API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19881329"
+	},
+	"item": [
+		{
+			"name": "Chatbot Message Api",
+			"item": [
+				{
+					"name": "Text",
+					"item": [
+						{
+							"name": "Send Text Message",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "This is normal Text Message",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Text Message With Header Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "header",
+											"value": "This is header",
+											"description": "Header of the message. This will show on top in BOLD",
+											"type": "text"
+										},
+										{
+											"key": "footer",
+											"value": "This is footer",
+											"description": "FOoter of the message. This will show in small font in botton of body in message",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Text URL Message",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "previewUrl",
+											"value": "true",
+											"description": "If URL preview needs to render on WhatsApp. Only applicable to normal text message which has URL",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Location Message",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "{\n        \"longitude\": -122.425332,\n        \"latitude\": 37.758056,\n        \"name\": \"Facebook HQ\",\n        \"address\": \"1 Hacker Way, Menlo Park, CA 94025\"\n  }",
+											"description": "Location JSON",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "location",
+											"description": "Mandatory for Location Message",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Contact Message",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "{\n    \"addresses\": [\n    ],\n    \"name\": {\n        \"first_name\": \"Facebook\",\n        \"formatted_name\": \"Sai Service HQ\",\n        \"last_name\": \"'HQ\"\n    },\n    \"phones\": [\n        {\n            \"phone\": \"+11234567890\",\n            \"type\": \"WORK\",\n            \"wa_id\": \"11234567890\"\n        }\n    ]\n}",
+											"description": "Contact JSON",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "contact",
+											"description": "Mandatory for Contact Message",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Text With Buttons",
+					"item": [
+						{
+							"name": "Send Text Message",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "This is normal Text Message",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"buttons\": [\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id1\",\n        \"title\": \"Button1\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id2\",\n        \"title\": \"Button2\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id3\",\n        \"title\": \"Button3\"\n      }\n    }\n  ]\n}",
+											"description": "Button Payload in JSON format",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Text Message With Header Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "header",
+											"value": "This is header",
+											"description": "Header of the message. This will show on top in BOLD",
+											"type": "text"
+										},
+										{
+											"key": "footer",
+											"value": "This is footer",
+											"description": "FOoter of the message. This will show in small font in botton of body in message",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"buttons\": [\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id1\",\n        \"title\": \"Button1\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id2\",\n        \"title\": \"Button2\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id3\",\n        \"title\": \"Button3\"\n      }\n    }\n  ]\n}",
+											"description": "Button Payload in JSON format",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send List Message",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "list",
+											"description": "Mandatory for list type",
+											"type": "text"
+										},
+										{
+											"key": "header",
+											"value": "This is header",
+											"description": "Header of the message. This will show on top in BOLD",
+											"type": "text"
+										},
+										{
+											"key": "footer",
+											"value": "This is footer",
+											"description": "Footer of the message. This will show in small font in botton of body in message",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "This is body",
+											"description": "Body of the message",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"button\": \"Send\",\n  \"sections\": [\n    {\n      \"title\": \"Section 1\",\n      \"rows\": [\n        {\n          \"id\": \"ID 1.1\",\n          \"title\": \"Title 1.1\",\n          \"description\": \"Description 1.1\"\n        },\n        {\n          \"id\": \"ID 1.2\",\n          \"title\": \"Title 1.2\",\n          \"description\": \"Description 1.2\"\n        }\n      ]\n    },\n    {\n      \"title\": \"Section 2\",\n      \"rows\": [\n        {\n          \"id\": \"ID 2.1>\",\n          \"title\": \"Title 2.1\",\n          \"description\": \"Description 2.1\"\n        },\n        {\n          \"id\": \"ID 2.2\",\n          \"title\": \"Title 2.2\",\n          \"description\": \"Description 2.2\"\n        }\n      ]\n    }\n  ]\n}",
+											"description": "Button Payload in JSON format",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Media",
+					"item": [
+						{
+							"name": "Send Image Message By ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "sdasdasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with Image",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "image",
+											"description": "Media Type image",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Image Message By ID URL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with Image",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "image",
+											"description": "Media Type image",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://asia.olympus-imaging.com/content/000107507.jpg",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Video Message By ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "sdasdasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with Video",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "video",
+											"description": "Media Type video",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Video Message By ID URL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with Video",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "video",
+											"description": "Media Type video",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Audio Message By ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "sdasdasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "audio",
+											"description": "Media Type audio",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Audio Message By ID URL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "audio",
+											"description": "Media Type audio",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Doc Message By ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "sdasdasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with document",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "document",
+											"description": "Media Type document",
+											"type": "text"
+										},
+										{
+											"key": "documentName",
+											"value": "Test.pdf",
+											"description": "Document name incase of media type is document",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Doc Message By ID URL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with document",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "document",
+											"description": "Media Type document",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://smallpdf.com/handle-widget#url=https://assets.ctfassets.net/l3l0sjr15nav/29D2yYGKlHNm0fB2YM1uW4/8e638080a0603252b1a50f35ae8762fd/Get_Started_With_Smallpdf.pdf",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										},
+										{
+											"key": "documentName",
+											"value": "Test.pdf",
+											"description": "Document name incase of media type is document",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Sticker Message",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "{\n\t\t\"link\": \"https://img-05.stickers.cloud/packs/4536baa9-c14b-4d3e-964a-0cd4871eb11c/webp/431e0c1c-a10a-428d-a0bc-c7ad0741b940.webp\"\n\t}",
+											"description": "Sticker JSON",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "sticker",
+											"description": "Mandatory for Sticker Message",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Media With Buttons",
+					"item": [
+						{
+							"name": "Send Image Message By ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "sdasdasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with Image",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "image",
+											"description": "Media Type image",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"buttons\": [\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id1\",\n        \"title\": \"Button1\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id2\",\n        \"title\": \"Button2\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id3\",\n        \"title\": \"Button3\"\n      }\n    }\n  ]\n}",
+											"description": "Button Payload in JSON format",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Image Message By URL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with Image",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "image",
+											"description": "Media Type image",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://asia.olympus-imaging.com/content/000107507.jpg",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"buttons\": [\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id1\",\n        \"title\": \"Button1\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id2\",\n        \"title\": \"Button2\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id3\",\n        \"title\": \"Button3\"\n      }\n    }\n  ]\n}",
+											"description": "Button Payload in JSON format",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Video Message By ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "sdasdasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with Video",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "video",
+											"description": "Media Type video",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"buttons\": [\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id1\",\n        \"title\": \"Button1\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id2\",\n        \"title\": \"Button2\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id3\",\n        \"title\": \"Button3\"\n      }\n    }\n  ]\n}",
+											"description": "Button Payload in JSON format",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Video Message By URL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with Video",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "video",
+											"description": "Media Type video",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"buttons\": [\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id1\",\n        \"title\": \"Button1\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id2\",\n        \"title\": \"Button2\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id3\",\n        \"title\": \"Button3\"\n      }\n    }\n  ]\n}",
+											"description": "Button Payload in JSON format",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Doc Message By ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "sdasdasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with document",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "document",
+											"description": "Media Type document",
+											"type": "text"
+										},
+										{
+											"key": "documentName",
+											"value": "Test.pdf",
+											"description": "Document name incase of media type is document",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"buttons\": [\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id1\",\n        \"title\": \"Button1\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id2\",\n        \"title\": \"Button2\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id3\",\n        \"title\": \"Button3\"\n      }\n    }\n  ]\n}",
+											"description": "Button Payload in JSON format",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Doc Message By URL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "I the  to test",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is caption",
+											"description": "Caption along with document",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "document",
+											"description": "Media Type document",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://smallpdf.com/handle-widget#url=https://assets.ctfassets.net/l3l0sjr15nav/29D2yYGKlHNm0fB2YM1uW4/8e638080a0603252b1a50f35ae8762fd/Get_Started_With_Smallpdf.pdf",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										},
+										{
+											"key": "documentName",
+											"value": "Test.pdf",
+											"description": "Document name incase of media type is document",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"buttons\": [\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id1\",\n        \"title\": \"Button1\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id2\",\n        \"title\": \"Button2\"\n      }\n    },\n    {\n      \"type\": \"reply\",\n      \"reply\": {\n        \"id\": \"id3\",\n        \"title\": \"Button3\"\n      }\n    }\n  ]\n}",
+											"description": "Button Payload in JSON format",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Template Message Api",
+			"item": [
+				{
+					"name": "Text",
+					"item": [
+						{
+							"name": "Text Template",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template1",
+											"description": "Template Name",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Header Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template1",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "header",
+											"value": "This is Test header",
+											"description": "Pass only if header has variable",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Text With Buttons",
+					"item": [
+						{
+							"name": "Template With Header Footer and Quick Reply",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template1",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "header",
+											"value": "This is Test header",
+											"description": "Pass only if header has variable",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"button1\": \"Hello_button1\",\n  \"button2\": \"Hello_button2\",\n  \"button3\": \"Hello_button3\"\n}",
+											"description": "Button Payload in JSON format. This value will return in reply",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Header Footer and Dynamic URL Button",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template1",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "header",
+											"value": "This is Test header",
+											"description": "Pass only if header has variable",
+											"type": "text"
+										},
+										{
+											"key": "buttonUrlPath",
+											"value": "{\"button1\":\"543216\"}",
+											"description": "Dynamic Button URL Path",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Media",
+					"item": [
+						{
+							"name": "Template With Image ID Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "7861287-asdasdq-asdqwrasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "image",
+											"description": "Media Type image",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Image URL Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "image",
+											"description": "Media Type image",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://asia.olympus-imaging.com/content/000107507.jpg",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Video ID Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "7861287-asdasdq-asdqwrasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "video",
+											"description": "Media Type video",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Video URL Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "video",
+											"description": "Media Type video",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Document ID Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "7861287-asdasdq-asdqwrasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "document",
+											"description": "Media Type document",
+											"type": "text"
+										},
+										{
+											"key": "documentName",
+											"value": "test.pdf",
+											"description": "Document Name",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Document URL Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://smallpdf.com/handle-widget#url=https://assets.ctfassets.net/l3l0sjr15nav/29D2yYGKlHNm0fB2YM1uW4/8e638080a0603252b1a50f35ae8762fd/Get_Started_With_Smallpdf.pdf",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "document",
+											"description": "Media Type document",
+											"type": "text"
+										},
+										{
+											"key": "documentName",
+											"value": "test.pdf",
+											"description": "Document Name",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Media With Buttons",
+					"item": [
+						{
+							"name": "Template With Image ID Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "7861287-asdasdq-asdqwrasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "image",
+											"description": "Media Type image",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"button1\": \"Hello_button1\",\n  \"button2\": \"Hello_button2\",\n  \"button3\": \"Hello_button3\"\n}",
+											"description": "Button Payload in JSON format. This value will return in reply",
+											"type": "text"
+										},
+										{
+											"key": "buttonUrlPath",
+											"value": "index/adasd",
+											"description": "Dynamic Button URL Path",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Image URL Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "image",
+											"description": "Media Type image",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://asia.olympus-imaging.com/content/000107507.jpg",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"button1\": \"Hello_button1\",\n  \"button2\": \"Hello_button2\",\n  \"button3\": \"Hello_button3\"\n}",
+											"description": "Button Payload in JSON format. This value will return in reply",
+											"type": "text"
+										},
+										{
+											"key": "buttonUrlPath",
+											"value": "index/adasd",
+											"description": "Dynamic Button URL Path",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Video ID Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "7861287-asdasdq-asdqwrasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "video",
+											"description": "Media Type video",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"button1\": \"Hello_button1\",\n  \"button2\": \"Hello_button2\",\n  \"button3\": \"Hello_button3\"\n}",
+											"description": "Button Payload in JSON format. This value will return in reply",
+											"type": "text"
+										},
+										{
+											"key": "buttonUrlPath",
+											"value": "index/adasd",
+											"description": "Dynamic Button URL Path",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Video URL Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "video",
+											"description": "Media Type video",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"button1\": \"Hello_button1\",\n  \"button2\": \"Hello_button2\",\n  \"button3\": \"Hello_button3\"\n}",
+											"description": "Button Payload in JSON format. This value will return in reply",
+											"type": "text"
+										},
+										{
+											"key": "buttonUrlPath",
+											"value": "index/adasd",
+											"description": "Dynamic Button URL Path",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Document ID Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaId",
+											"value": "7861287-asdasdq-asdqwrasd",
+											"description": "Id to pickup media from system. Get this from Media Library in panel",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "document",
+											"description": "Media Type document",
+											"type": "text"
+										},
+										{
+											"key": "documentName",
+											"value": "test.pdf",
+											"description": "Document Name",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"button1\": \"Hello_button1\",\n  \"button2\": \"Hello_button2\",\n  \"button3\": \"Hello_button3\"\n}",
+											"description": "Button Payload in JSON format. This value will return in reply",
+											"type": "text"
+										},
+										{
+											"key": "buttonUrlPath",
+											"value": "index/adasd",
+											"description": "Dynamic Button URL Path",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Template With Document URL Header and Text Footer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "Your account XXXXXX123 has been debited with Rs 1000 on 2022-01-01 with immediate effect",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{SENDING_NUMBER}}",
+											"description": "WhatsApp Business Number with countrycode",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{RECEIVER_PHONE_NUMBER}}",
+											"description": "Phone number of recipient with countrycode. Add comma if multiple Phone Numbers (maximum 100)",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "media",
+											"description": "Mandatory for Media Message",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "template4",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "mediaUrl",
+											"value": "https://smallpdf.com/handle-widget#url=https://assets.ctfassets.net/l3l0sjr15nav/29D2yYGKlHNm0fB2YM1uW4/8e638080a0603252b1a50f35ae8762fd/Get_Started_With_Smallpdf.pdf",
+											"description": "Media URL incase of media is hosted on publicly accisible url",
+											"type": "text"
+										},
+										{
+											"key": "mediaType",
+											"value": "document",
+											"description": "Media Type document",
+											"type": "text"
+										},
+										{
+											"key": "documentName",
+											"value": "test.pdf",
+											"description": "Document Name",
+											"type": "text"
+										},
+										{
+											"key": "buttonsPayload",
+											"value": "{\n  \"button1\": \"Hello_button1\",\n  \"button2\": \"Hello_button2\",\n  \"button3\": \"Hello_button3\"\n}",
+											"description": "Button Payload in JSON format. This value will return in reply",
+											"type": "text"
+										},
+										{
+											"key": "buttonUrlPath",
+											"value": "index/adasd",
+											"description": "Dynamic Button URL Path",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Interactive",
+					"item": [
+						{
+							"name": "Carousel Message",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "apikey",
+										"value": "{{API_KEY}}",
+										"description": "API Key",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userid",
+											"value": "{{USER_ID}}",
+											"description": "Account userid",
+											"type": "text"
+										},
+										{
+											"key": "msg",
+											"value": "This is test carousel flow done for User",
+											"description": "Text Message",
+											"type": "text"
+										},
+										{
+											"key": "wabaNumber",
+											"value": "{{WABA_NUMBER}}",
+											"description": "WhatsApp Business Number",
+											"type": "text"
+										},
+										{
+											"key": "output",
+											"value": "json",
+											"description": "Response output format (text/json/xml). Default text",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "{{PHONE_NUMBER}}",
+											"description": "Phone number of recipient. Add comma if multiple Phone Numbers",
+											"type": "text"
+										},
+										{
+											"key": "sendMethod",
+											"value": "quick",
+											"description": "Send method to push message (quick/group/file)",
+											"type": "text"
+										},
+										{
+											"key": "msgType",
+											"value": "text",
+											"description": "Message Type text/media",
+											"type": "text"
+										},
+										{
+											"key": "templateName",
+											"value": "seasonal_promotion_carousel",
+											"description": "Template Name",
+											"type": "text"
+										},
+										{
+											"key": "carousel",
+											"value": "[\n  {\n    \"card_index\": 0,\n    \"components\": [\n      {\n        \"type\": \"HEADER\",\n        \"parameters\": [\n          {\n            \"type\": \"IMAGE\",\n            \"image\": {\n              \"link\": \"https://www.florianorth.de/wp-content/uploads/20230920-FO8_5063-Verbessert-RR-Pano-1024x649.jpg\"\n            }\n          }\n        ]\n      },\n      {\n        \"type\": \"BODY\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"ONe\"\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"card_index\": 1,\n    \"components\": [\n      {\n        \"type\": \"HEADER\",\n        \"parameters\": [\n          {\n            \"type\": \"IMAGE\",\n            \"image\": {\n              \"link\": \"https://photographylife.com/wp-content/uploads/2023/05/Nikon-Z8-Official-Samples-00002.jpg\"\n            }\n          }\n        ]\n      },\n      {\n        \"type\": \"BODY\",\n        \"parameters\": []\n      }\n    ]\n  }\n]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://theultimate.io/WAApi/send",
+									"protocol": "https",
+									"host": [
+										"theultimate",
+										"io"
+									],
+									"path": [
+										"WAApi",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Media Management Api",
+			"item": [
+				{
+					"name": "Upload By File",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid",
+									"type": "text"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{SENDING_NUMBER}}",
+									"description": "WhatsApp Business Number with countrycode",
+									"type": "text"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text",
+									"type": "text"
+								},
+								{
+									"key": "mediaType",
+									"value": "image",
+									"description": "Media Type image/video/document/audio.",
+									"type": "text"
+								},
+								{
+									"key": "identifier",
+									"value": "ImageTesting",
+									"description": "Media Identifier",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is test image",
+									"description": "Media Description",
+									"type": "text"
+								},
+								{
+									"key": "mediaFile",
+									"description": "Media File ",
+									"type": "file",
+									"src": "/home/ketan/Documents/Untitled 1.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://theultimate.io/WAApi/media",
+							"protocol": "https",
+							"host": [
+								"theultimate",
+								"io"
+							],
+							"path": [
+								"WAApi",
+								"media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Media",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://theultimate.io/WAApi/media?userid={{USER_ID}}&output=json&mediaId=3432110056169492054",
+							"protocol": "https",
+							"host": [
+								"theultimate",
+								"io"
+							],
+							"path": [
+								"WAApi",
+								"media"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text"
+								},
+								{
+									"key": "mediaId",
+									"value": "3432110056169492054",
+									"description": "Id to pickup media from system. Get this from Media Library in panel"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download Media",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://theultimate.io/WAApi/media?userid={{USER_ID}}&output=json&mediaId=1684608295938312131&download=true",
+							"protocol": "https",
+							"host": [
+								"theultimate",
+								"io"
+							],
+							"path": [
+								"WAApi",
+								"media"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text"
+								},
+								{
+									"key": "mediaId",
+									"value": "1684608295938312131",
+									"description": "Id to pickup media from system. Get this from Media Library in panel"
+								},
+								{
+									"key": "download",
+									"value": "true",
+									"description": "If need downloadable stream"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://theultimate.io/WAApi/media?userid={{USER_ID}}&output=json",
+							"protocol": "https",
+							"host": [
+								"theultimate",
+								"io"
+							],
+							"path": [
+								"WAApi",
+								"media"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://theultimate.io/WAApi/media?userid={{USER_ID}}&output=json&mediaId=1952729834901819105",
+							"protocol": "https",
+							"host": [
+								"theultimate",
+								"io"
+							],
+							"path": [
+								"WAApi",
+								"media"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text"
+								},
+								{
+									"key": "mediaId",
+									"value": "1952729834901819105",
+									"description": "Id to pickup media from system. Get this from Media Library in panel"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Template Management",
+			"item": [
+				{
+					"name": "List Templates",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template?userid={{USER_ID}}&password={{PASSWORD}}&wabaNumber={{WABA_NUMBER}}&output=json",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template?userid={{USER_ID}}&password={{PASSWORD}}&wabaNumber={{WABA_NUMBER}}&output=json&templateName=template_custom_1209",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text"
+								},
+								{
+									"key": "templateName",
+									"value": "template_custom_1209",
+									"description": "Template Name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Template",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template?userid={{USER_ID}}&password={{PASSWORD}}&wabaNumber={{WABA_NUMBER}}&output=json&templateName=hsm_buttons_enlish&language=en",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text"
+								},
+								{
+									"key": "templateName",
+									"value": "hsm_buttons_enlish",
+									"description": "Template Name"
+								},
+								{
+									"key": "language",
+									"value": "en",
+									"description": "Template Language"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Text",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password",
+									"type": "text"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number",
+									"type": "text"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text",
+									"type": "text"
+								},
+								{
+									"key": "msgType",
+									"value": "text",
+									"description": "Message Type text",
+									"type": "text"
+								},
+								{
+									"key": "header",
+									"value": "This is {{1}} header",
+									"description": "Header of the message. This will show on top in BOLD",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Your account {{1}} is having {{2}} on {{3}}",
+									"description": "Message Body",
+									"type": "text"
+								},
+								{
+									"key": "footer",
+									"value": "By XYZ Brand",
+									"description": "Footer of the message. This will show in small font in botton of body in message",
+									"type": "text"
+								},
+								{
+									"key": "headerSample",
+									"value": "This is New header",
+									"description": "Header sample incase of variables in header",
+									"type": "text"
+								},
+								{
+									"key": "bodySample",
+									"value": "Your account {{1}} is having {{2}} on Done",
+									"description": "Body sample incase of variables in body",
+									"type": "text"
+								},
+								{
+									"key": "templateName",
+									"value": "Test1",
+									"description": "Template Name",
+									"type": "text"
+								},
+								{
+									"key": "templateDescription",
+									"value": "Testing",
+									"description": "Template description",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "en",
+									"description": "Template Message Language",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "ACCOUNT_UPDATE",
+									"description": "Template type category",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Quick Reply Buttons",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password",
+									"type": "text"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number",
+									"type": "text"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text",
+									"type": "text"
+								},
+								{
+									"key": "msgType",
+									"value": "text",
+									"description": "Message Type text",
+									"type": "text"
+								},
+								{
+									"key": "header",
+									"value": "This is {{1}} header",
+									"description": "Header of the message. This will show on top in BOLD",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Your account {{1}} is having {{2}} on {{3}}",
+									"description": "Message Body",
+									"type": "text"
+								},
+								{
+									"key": "footer",
+									"value": "By XYZ Brand",
+									"description": "Footer of the message. This will show in small font in botton of body in message",
+									"type": "text"
+								},
+								{
+									"key": "headerSample",
+									"value": "This is New header",
+									"description": "Header sample incase of variables in header",
+									"type": "text"
+								},
+								{
+									"key": "bodySample",
+									"value": "Your account XXXXX89798789 is having Rs.1000  on 2022-01-01",
+									"description": "Body sample incase of variables in body",
+									"type": "text"
+								},
+								{
+									"key": "buttons",
+									"value": "[\n  {\n    \"text\": \"RESOLVED\",\n    \"type\": \"QUICK_REPLY\"\n  },\n  {\n    \"text\": \"NO\",\n    \"type\": \"QUICK_REPLY\"\n  },\n  {\n    \"text\": \"YES\",\n    \"type\": \"QUICK_REPLY\"\n  }\n]",
+									"description": "Buttons Payload in JSON",
+									"type": "text"
+								},
+								{
+									"key": "templateName",
+									"value": "Test2",
+									"description": "Template Name",
+									"type": "text"
+								},
+								{
+									"key": "templateDescription",
+									"value": "Testing",
+									"description": "Template description",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "en",
+									"description": "Template Message Language",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "ISSUE_RESOLUTION",
+									"description": "Template type category",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Call To Action Button Fix URL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password",
+									"type": "text"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number",
+									"type": "text"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text",
+									"type": "text"
+								},
+								{
+									"key": "msgType",
+									"value": "text",
+									"description": "Message Type text",
+									"type": "text"
+								},
+								{
+									"key": "header",
+									"value": "This is {{1}} header",
+									"description": "Header of the message. This will show on top in BOLD",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Your account {{1}} is having {{2}} on {{3}}",
+									"description": "Message Body",
+									"type": "text"
+								},
+								{
+									"key": "footer",
+									"value": "By XYZ Brand",
+									"description": "Footer of the message. This will show in small font in botton of body in message",
+									"type": "text"
+								},
+								{
+									"key": "headerSample",
+									"value": "This is New header",
+									"description": "Header sample incase of variables in header",
+									"type": "text"
+								},
+								{
+									"key": "bodySample",
+									"value": "Your account XXXXX89798789 is having Rs.1000  on 2022-01-01",
+									"description": "Body sample incase of variables in body",
+									"type": "text"
+								},
+								{
+									"key": "buttons",
+									"value": "[\n  {\n    \"phone_number\": \"+1(650) 555-1111\",\n    \"text\": \"your-phone-button-text\",\n    \"type\": \"PHONE_NUMBER\"\n  },\n  {\n    \"text\": \"your-url-button-text\",\n    \"type\": \"URL\",\n    \"url\": \"https://www.website.com\"\n  }\n]",
+									"description": "Buttons Payload In JSON",
+									"type": "text"
+								},
+								{
+									"key": "templateName",
+									"value": "Test3",
+									"description": "Template Name",
+									"type": "text"
+								},
+								{
+									"key": "templateDescription",
+									"value": "Testing",
+									"description": "Template description",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "en",
+									"description": "Template Message Language",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "ISSUE_RESOLUTION",
+									"description": "Template type category",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Call To Action Button Dynamic URL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password",
+									"type": "text"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number",
+									"type": "text"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text",
+									"type": "text"
+								},
+								{
+									"key": "msgType",
+									"value": "text",
+									"description": "Message Type text",
+									"type": "text"
+								},
+								{
+									"key": "header",
+									"value": "This is {{1}} header",
+									"description": "Header of the message. This will show on top in BOLD",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Your account {{1}} is having {{2}} on {{3}}",
+									"description": "Message Body",
+									"type": "text"
+								},
+								{
+									"key": "footer",
+									"value": "By XYZ Brand",
+									"description": "Footer of the message. This will show in small font in botton of body in message",
+									"type": "text"
+								},
+								{
+									"key": "headerSample",
+									"value": "This is New header",
+									"description": "Header sample incase of variables in header",
+									"type": "text"
+								},
+								{
+									"key": "bodySample",
+									"value": "Your account XXXXX89798789 is having Rs.1000  on 2022-01-01",
+									"description": "Body sample incase of variables in body",
+									"type": "text"
+								},
+								{
+									"key": "buttons",
+									"value": "[\n  {\n    \"phone_number\": \"+1(650) 555-1111\",\n    \"text\": \"your-phone-button-text\",\n    \"type\": \"PHONE_NUMBER\"\n  },\n  {\n    \"sample\":\"https://www.website.com/dynamic-url-example\",\n    \"text\": \"your-url-button-text\",\n    \"type\": \"URL\",\n    \"url\": \"https://www.website.com/{{1}}\"\n  }\n]",
+									"description": "Buttons Payload In JSON",
+									"type": "text"
+								},
+								{
+									"key": "templateName",
+									"value": "Test4",
+									"description": "Template Name",
+									"type": "text"
+								},
+								{
+									"key": "templateDescription",
+									"value": "Testing",
+									"description": "Template description",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "en",
+									"description": "Template Message Language",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "ISSUE_RESOLUTION",
+									"description": "Template type category",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Media",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password",
+									"type": "text"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number",
+									"type": "text"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text",
+									"type": "text"
+								},
+								{
+									"key": "msgType",
+									"value": "media",
+									"description": "Message Type media",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Your account {{1}} is having {{2}} on {{3}}",
+									"description": "Message Body",
+									"type": "text"
+								},
+								{
+									"key": "footer",
+									"value": "By XYZ Brand",
+									"description": "Footer of the message. This will show in small font in botton of body in message",
+									"type": "text"
+								},
+								{
+									"key": "bodySample",
+									"value": "Your account XXXXX89798789 is having Rs.1000  on 2022-01-01",
+									"description": "Body sample incase of variables in body",
+									"type": "text"
+								},
+								{
+									"key": "headerSampleFile",
+									"value": "http://google.com",
+									"description": "Sample Header Media URL",
+									"type": "text"
+								},
+								{
+									"key": "mediaType",
+									"value": "image",
+									"description": "image/video/document",
+									"type": "text"
+								},
+								{
+									"key": "templateName",
+									"value": "Test5",
+									"description": "Template Name",
+									"type": "text"
+								},
+								{
+									"key": "templateDescription",
+									"value": "Testing",
+									"description": "Template description",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "en",
+									"description": "Template Message Language",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "ISSUE_RESOLUTION",
+									"description": "Template type category",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Media With Quick Reply Buttons",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password",
+									"type": "text"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number",
+									"type": "text"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text",
+									"type": "text"
+								},
+								{
+									"key": "msgType",
+									"value": "media",
+									"description": "Message Type media",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Your account {{1}} is having {{2}} on {{3}}",
+									"description": "Message Body",
+									"type": "text"
+								},
+								{
+									"key": "footer",
+									"value": "By XYZ Brand",
+									"description": "Footer of the message. This will show in small font in botton of body in message",
+									"type": "text"
+								},
+								{
+									"key": "bodySample",
+									"value": "Your account XXXXX89798789 is having Rs.1000  on 2022-01-01",
+									"description": "Body sample incase of variables in body",
+									"type": "text"
+								},
+								{
+									"key": "headerSampleFile",
+									"value": "http:///google.com",
+									"description": "Sample Header Media URL",
+									"type": "text"
+								},
+								{
+									"key": "mediaType",
+									"value": "image",
+									"description": "image/video/document",
+									"type": "text"
+								},
+								{
+									"key": "buttons",
+									"value": "[\n  {\n    \"phone_number\": \"+1(650) 555-1111\",\n    \"text\": \"your-phone-button-text\",\n    \"type\": \"PHONE_NUMBER\"\n  },\n  {\n    \"sample\": \"https://www.website.com/dynamic-url-example\",\n    \"text\": \"your-url-button-text\",\n    \"type\": \"URL\",\n    \"url\": \"https://www.website.com/{{1}}\"\n  }\n]",
+									"description": "Buttons Payload In JSON",
+									"type": "text"
+								},
+								{
+									"key": "templateName",
+									"value": "Test6",
+									"description": "Template Name",
+									"type": "text"
+								},
+								{
+									"key": "templateDescription",
+									"value": "Testing",
+									"description": "Template description",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "en",
+									"description": "Template Message Language",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "ISSUE_RESOLUTION",
+									"description": "Template type category",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Media With Call To Action Button Fix URL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password",
+									"type": "text"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number",
+									"type": "text"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text",
+									"type": "text"
+								},
+								{
+									"key": "msgType",
+									"value": "media",
+									"description": "Message Type media",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Your account {{1}} is having {{2}} on {{3}}",
+									"description": "Message Body",
+									"type": "text"
+								},
+								{
+									"key": "footer",
+									"value": "By XYZ Brand",
+									"description": "Footer of the message. This will show in small font in botton of body in message",
+									"type": "text"
+								},
+								{
+									"key": "bodySample",
+									"value": "Your account XXXXX89798789 is having Rs.1000  on 2022-01-01",
+									"description": "Body sample incase of variables in body",
+									"type": "text"
+								},
+								{
+									"key": "headerSampleFile",
+									"value": "http://google.com",
+									"description": "Sample Header Media URL",
+									"type": "text"
+								},
+								{
+									"key": "mediaType",
+									"value": "image",
+									"description": "image/video/document",
+									"type": "text"
+								},
+								{
+									"key": "buttons",
+									"value": "[\n  {\n    \"phone_number\": \"+1(650) 555-1111\",\n    \"text\": \"your-phone-button-text\",\n    \"type\": \"PHONE_NUMBER\"\n  },\n  {\n    \"text\": \"your-url-button-text\",\n    \"type\": \"URL\",\n    \"url\": \"https://www.website.com\"\n  }\n]",
+									"description": "Buttons Payload In JSON",
+									"type": "text"
+								},
+								{
+									"key": "templateName",
+									"value": "Test7",
+									"description": "Template Name",
+									"type": "text"
+								},
+								{
+									"key": "templateDescription",
+									"value": "Testing",
+									"description": "Template description",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "en",
+									"description": "Template Message Language",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "ISSUE_RESOLUTION",
+									"description": "Template type category",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Media With Call To Action Button Dynamic URL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"description": "API Key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userid",
+									"value": "{{USER_ID}}",
+									"description": "Account userid",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{PASSWORD}}",
+									"description": "Account password",
+									"type": "text"
+								},
+								{
+									"key": "wabaNumber",
+									"value": "{{WABA_NUMBER}}",
+									"description": "WhatsApp Business Number",
+									"type": "text"
+								},
+								{
+									"key": "output",
+									"value": "json",
+									"description": "Response output format (text/json/xml). Default text",
+									"type": "text"
+								},
+								{
+									"key": "msgType",
+									"value": "media",
+									"description": "Message Type media",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Your account {{1}} is having {{2}} on {{3}}",
+									"description": "Message Body",
+									"type": "text"
+								},
+								{
+									"key": "footer",
+									"value": "By XYZ Brand",
+									"description": "Footer of the message. This will show in small font in botton of body in message",
+									"type": "text"
+								},
+								{
+									"key": "headerSampleFile",
+									"value": "http;//gogole.com",
+									"description": "Sample Header Media URL",
+									"type": "text"
+								},
+								{
+									"key": "mediaType",
+									"value": "image",
+									"description": "image/video/document",
+									"type": "text"
+								},
+								{
+									"key": "buttons",
+									"value": "[\n  {\n    \"phone_number\": \"+1(650) 555-1111\",\n    \"text\": \"your-phone-button-text\",\n    \"type\": \"PHONE_NUMBER\"\n  },\n  {\n    \"sample\": \"https://www.website.com/dynamic-url-example\",\n    \"text\": \"your-url-button-text\",\n    \"type\": \"URL\",\n    \"url\": \"https://www.website.com/{{1}}\"\n  }\n]",
+									"description": "Buttons Payload In JSON",
+									"type": "text"
+								},
+								{
+									"key": "templateName",
+									"value": "Test8",
+									"description": "Template Name",
+									"type": "text"
+								},
+								{
+									"key": "templateDescription",
+									"value": "Testing",
+									"description": "Template description",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "en",
+									"description": "Template Message Language",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "ISSUE_RESOLUTION",
+									"description": "Template type category",
+									"type": "text"
+								},
+								{
+									"key": "bodySample",
+									"value": "Your account XXXX3123 is having 100 on 22",
+									"description": "Body sample incase of variables in body",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{WA_SERVER}}/template",
+							"host": [
+								"{{WA_SERVER}}"
+							],
+							"path": [
+								"template"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delivery Report Api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "{{Username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "text"
+						},
+						{
+							"key": "wabaNumber",
+							"value": "{{WABA_Number}}",
+							"type": "text"
+						},
+						{
+							"key": "fromDate",
+							"value": "2023-08-10 20:00:00",
+							"type": "text"
+						},
+						{
+							"key": "toDate",
+							"value": "2023-08-16 20:00:00",
+							"type": "text"
+						},
+						{
+							"key": "uuId",
+							"value": "4756051048237975176",
+							"type": "text"
+						},
+						{
+							"key": "mobileNo",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "pageLimit",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "startCursor",
+							"value": "19650019",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://theultimate.io/WAApi/report",
+					"protocol": "https",
+					"host": [
+						"theultimate",
+						"io"
+					],
+					"path": [
+						"WAApi",
+						"report"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
