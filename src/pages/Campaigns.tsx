@@ -817,47 +817,53 @@ export default function Campaigns() {
             });
           }
 
-          // Call the edge function to send the message
-          console.log('=== SENDING MESSAGE TO EDGE FUNCTION ===');
+          // Get client credentials for API call
+          const { data: clientData, error: clientError } = await supabase
+            .from('client_users')
+            .select('user_id, whatsapp_api_key, whatsapp_number')
+            .eq('id', client?.id)
+            .single();
+
+          if (clientError || !clientData) {
+            console.error('Failed to get client credentials:', clientError);
+            failureCount++;
+            continue;
+          }
+
+          // Call the proxy server to send the message
+          console.log('=== SENDING MESSAGE VIA PROXY SERVER ===');
           console.log('Contact phone:', contact.phone);
           console.log('Message content:', messageContent);
           console.log('Template name:', template.template_name);
           console.log('Campaign ID:', campaignId);
-          console.log('Client token available:', !!clientToken);
-          console.log('Client token preview:', clientToken ? clientToken.substring(0, 20) + '...' : 'NO_TOKEN');
 
           const requestBody = {
-            recipient_phone: contact.phone,
-            message_content: messageContent,
-            message_type: 'text',
-            template_name: template.template_name,
-            campaign_id: campaignId,
-            ...(campaign.selected_media_id && campaign.selected_media_type && {
-              media_id: campaign.selected_media_id,
-              media_type: campaign.selected_media_type
-            })
+            userId: clientData.user_id,
+            apiKey: clientData.whatsapp_api_key,
+            wabaNumber: clientData.whatsapp_number,
+            recipientPhone: contact.phone,
+            messageContent: messageContent,
+            messageType: 'text'
           };
 
-          console.log('=== EDGE FUNCTION REQUEST DETAILS ===');
-          console.log('URL:', `${supabase.supabaseUrl}/functions/v1/send-whatsapp-message`);
+          console.log('=== PROXY SERVER REQUEST DETAILS ===');
+          console.log('URL:', '/api/send-message');
           console.log('Method:', 'POST');
-          console.log('Headers:', {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${clientToken ? clientToken.substring(0, 20) + '...' : 'NO_TOKEN'}`
+          console.log('Request Body (sanitized):', {
+            ...requestBody,
+            apiKey: '***' + requestBody.apiKey?.slice(-4)
           });
-          console.log('Request Body:', JSON.stringify(requestBody, null, 2));
           console.log('=== END REQUEST DETAILS ===');
 
-          const response = await fetch(`${supabase.supabaseUrl}/functions/v1/send-whatsapp-message`, {
+          const response = await fetch('/api/send-message', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${clientToken}`,
             },
             body: JSON.stringify(requestBody)
           });
 
-          console.log('=== EDGE FUNCTION RESPONSE DETAILS ===');
+          console.log('=== PROXY SERVER RESPONSE DETAILS ===');
           console.log('Response status:', response.status);
           console.log('Response ok:', response.ok);
           console.log('Response status text:', response.statusText);
@@ -875,6 +881,26 @@ export default function Campaigns() {
             result = { success: false, error: 'Invalid JSON response', raw: responseText };
           }
           console.log('=== END RESPONSE DETAILS ===');
+
+          // Save message record to database
+          const messageStatus = result.success ? 'sent' : 'failed';
+          const { error: messageError } = await supabase
+            .from('messages')
+            .insert({
+              user_id: client?.id,
+              client_id: client?.id,
+              recipient_phone: contact.phone,
+              message_content: messageContent,
+              message_type: 'text',
+              campaign_id: campaignId,
+              status: messageStatus,
+              sent_at: result.success ? new Date().toISOString() : null,
+              error_message: result.success ? null : (result.error || 'Unknown error')
+            });
+
+          if (messageError) {
+            console.error('Failed to save message record:', messageError);
+          }
 
           if (result.success) {
             successCount++;

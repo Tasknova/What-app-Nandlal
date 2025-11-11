@@ -549,18 +549,41 @@ const ContactManagement = () => {
 
     setImporting(true);
     try {
+      console.log('=== CSV IMPORT DEBUG ===');
+      console.log('Group ID:', newContact.groupId);
+      console.log('Client ID:', client.id);
+      console.log('CSV Content Length:', csvContent.length);
+      console.log('CSV Preview:', csvContent.substring(0, 200));
+      
       const { data: result, error } = await supabase.rpc('import_contacts_from_csv_flexible', {
         csv_data: csvContent,
         group_id: newContact.groupId,
         p_client_id: client.id
       });
 
-      if (error) throw error;
+      console.log('Import Result:', result);
+      console.log('Import Error:', error);
+
+      if (error) {
+        console.error('Supabase RPC Error:', error);
+        throw error;
+      }
 
       if (result && result.success) {
         const message = result.inserted_count > 0 
-          ? `Successfully imported ${result.inserted_count} contacts${result.error_count > 0 ? ` (${result.error_count} errors)` : ''}`
-          : 'No contacts were imported';
+          ? `Successfully imported ${result.inserted_count} contacts${result.error_count > 0 ? ` (${result.error_count} errors, ${result.skipped_count || 0} skipped)` : ''}`
+          : `No contacts were imported. Skipped: ${result.skipped_count || 0}, Errors: ${result.error_count || 0}`;
+        
+        console.log('Import Summary:', {
+          imported: result.inserted_count,
+          skipped: result.skipped_count,
+          errors: result.error_count,
+          error_messages: result.error_messages
+        });
+        
+        if (result.error_messages && result.error_messages.length > 0) {
+          console.error('Import Errors:', result.error_messages);
+        }
         
         toast({
           title: "Import Complete",
@@ -568,7 +591,8 @@ const ContactManagement = () => {
           duration: 5000,
         });
       } else {
-        throw new Error(result?.error || 'Import failed');
+        console.error('Import failed:', result);
+        throw new Error(result?.error_message || 'Import failed');
       }
 
       setCsvContent('');

@@ -924,6 +924,150 @@ app.post('/api/fetch-wallet-balance', async (req, res) => {
   }
 });
 
+// Send WhatsApp message endpoint
+app.post('/api/send-message', async (req, res) => {
+  try {
+    const { userId, apiKey, wabaNumber, recipientPhone, messageContent, messageType = 'text' } = req.body;
+
+    console.log('=== SEND MESSAGE API REQUEST RECEIVED ===');
+    console.log('Request Method:', req.method);
+    console.log('Request Body:', JSON.stringify({
+      userId,
+      apiKey: apiKey ? '***' + apiKey.slice(-4) : 'NOT_PROVIDED',
+      wabaNumber,
+      recipientPhone,
+      messageType,
+      contentLength: messageContent?.length
+    }));
+    console.log('=====================================');
+
+    if (!userId || !apiKey || !wabaNumber || !recipientPhone || !messageContent) {
+      return res.status(400).json({ 
+        success: false,
+        error: 'Missing required parameters',
+        details: {
+          userId: !!userId,
+          apiKey: !!apiKey,
+          wabaNumber: !!wabaNumber,
+          recipientPhone: !!recipientPhone,
+          messageContent: !!messageContent
+        }
+      });
+    }
+
+    console.log('=== SEND MESSAGE API REQUEST DETAILS ===');
+    console.log('User ID:', userId);
+    console.log('API Key:', '***' + apiKey.slice(-4));
+    console.log('WhatsApp Number:', wabaNumber);
+    console.log('Recipient:', recipientPhone);
+    console.log('Message Type:', messageType);
+    console.log('Content Length:', messageContent.length, 'characters');
+    console.log('========================================');
+
+    // Create FormData for the theultimate.io WhatsApp API
+    const FormData = require('form-data');
+    const formData = new FormData();
+    formData.append('userid', userId);
+    formData.append('msg', messageContent);
+    formData.append('wabaNumber', wabaNumber);
+    formData.append('output', 'json');
+    formData.append('mobile', recipientPhone);
+    formData.append('sendMethod', 'quick');
+    formData.append('msgType', messageType);
+
+    console.log('=== WHATSAPP API REQUEST DETAILS ===');
+    console.log('URL:', 'https://theultimate.io/WAApi/send');
+    console.log('Method:', 'POST');
+    console.log('Headers:', {
+      'apikey': '***' + apiKey.slice(-4),
+      'Cookie': 'SERVERID=webC1'
+    });
+    console.log('FormData Body:');
+    console.log('  userid:', userId);
+    console.log('  msg:', messageContent.substring(0, 100) + (messageContent.length > 100 ? '...' : ''));
+    console.log('  wabaNumber:', wabaNumber);
+    console.log('  output:', 'json');
+    console.log('  mobile:', recipientPhone);
+    console.log('  sendMethod:', 'quick');
+    console.log('  msgType:', messageType);
+    console.log('====================================');
+
+    // Make request to WhatsApp API
+    const response = await fetch('https://theultimate.io/WAApi/send', {
+      method: 'POST',
+      headers: {
+        'apikey': apiKey,
+        'Cookie': 'SERVERID=webC1',
+        ...formData.getHeaders()
+      },
+      body: formData
+    });
+
+    console.log('=== WHATSAPP API RESPONSE DETAILS ===');
+    console.log('Response Status:', response.status);
+    console.log('Response Status Text:', response.statusText);
+    console.log('Response Headers:', Object.fromEntries(response.headers.entries()));
+    console.log('====================================');
+
+    const responseText = await response.text();
+    console.log('Raw Response Body:', responseText);
+
+    let data;
+    try {
+      data = JSON.parse(responseText);
+      console.log('Parsed JSON Response:', data);
+    } catch (parseError) {
+      console.log('Failed to parse JSON response:', parseError);
+      return res.status(500).json({
+        success: false,
+        error: 'Invalid response from WhatsApp API',
+        raw: responseText
+      });
+    }
+
+    if (!response.ok) {
+      console.log('API Error Response:', data);
+      return res.status(response.status).json({ 
+        success: false,
+        error: `HTTP error! status: ${response.status}`,
+        details: data
+      });
+    }
+    
+    if (data.status === 'success') {
+      console.log('Message sent successfully');
+      return res.json({
+        success: true,
+        messageId: data.messageId,
+        transactionId: data.transactionId,
+        status: data.status,
+        message: 'Message sent successfully',
+        apiResponse: data
+      });
+    } else {
+      console.log('Message failed:', data.reason || data.message || 'Unknown error');
+      return res.status(400).json({ 
+        success: false,
+        error: data.reason || data.message || 'Failed to send message',
+        apiResponse: data
+      });
+    }
+
+  } catch (error) {
+    console.error('=== SEND MESSAGE ERROR ===');
+    console.error('Error:', error);
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
+    console.error('=========================');
+    
+    return res.status(500).json({ 
+      success: false,
+      error: 'Internal server error',
+      details: error.message
+    });
+  }
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
@@ -941,6 +1085,7 @@ app.get('/', (req, res) => {
     status: 'running',
     endpoints: [
       'GET /health',
+      'POST /api/send-message',
       'POST /api/create-template',
       'DELETE /api/delete-template',
       'POST /api/upload-media',
