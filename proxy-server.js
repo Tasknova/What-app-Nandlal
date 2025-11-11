@@ -7,8 +7,8 @@ import FormData from 'form-data';
 import multer from 'multer';
 
 const supabase = createClient(
-  process.env.VITE_SUPABASE_URL || "https://vvpamvhqdyanomqvtmiz.supabase.co",
-  process.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2cGFtdmhxZHlhbm9tcXZ0bWl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI2Njc5NTYsImV4cCI6MjA2ODI0Mzk1Nn0.Jq1ek02FHiTOx9m8hQzX9Gh8bmOMzWSJ2YtJIzKg3ZQ"
+  process.env.VITE_SUPABASE_URL || "https://xzmcyvgtetlnzbwanukr.supabase.co",
+  process.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6bWN5dmd0ZXRsbnpid2FudWtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4NTE4NjMsImV4cCI6MjA3ODQyNzg2M30.XZRSgHSOw0iOL36nFgIpNycRY8Dugi4GK14ngdWIeOs"
 );
 
 const app = express();
