@@ -7,7 +7,6 @@ import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Eye, EyeOff, Users, ArrowRight } from 'lucide-react';
 import { useClientAuth } from '@/hooks/useClientAuth';
-import authHero from '@/assets/auth-hero.jpg';
 
 const Auth = () => {
   const [userIdentifier, setUserIdentifier] = useState('');
@@ -45,16 +44,15 @@ const Auth = () => {
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left side - Hero Image */}
         <div className="hidden lg:block">
-          <div className="relative">
-            <img 
-              src={authHero} 
-              alt="Nandlal Jewellers" 
-              className="w-full h-auto rounded-2xl shadow-2xl"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
-            <div className="absolute bottom-6 left-6 text-white">
-              <h2 className="text-3xl font-bold mb-2">Nandlal Jewellers</h2>
-              <p className="text-lg opacity-90">WhatsApp Business Management System</p>
+          <div className="relative bg-gradient-to-br from-amber-100 to-yellow-100 rounded-2xl shadow-2xl p-12 flex items-center justify-center min-h-[500px]">
+            <div className="text-center">
+              <img 
+                src="/logo.png" 
+                alt="Nandlal Jewellers" 
+                className="w-64 h-auto mx-auto mb-6 object-contain"
+              />
+              <h2 className="text-3xl font-bold mb-2 text-gray-900">Nandlal Jewellers</h2>
+              <p className="text-lg text-gray-700">WhatsApp Business Management System</p>
             </div>
           </div>
         </div>
