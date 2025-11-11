@@ -11,7 +11,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, RefreshCw, Search, Upload, Download, Trash2, Image, Video, Music, FileText, Plus, Calendar, Clock, X } from 'lucide-react';
+import { Loader2, RefreshCw, Search, Upload, Download, Trash2, Image, Video, Music, FileText, Plus, Calendar, Clock, X, Eye } from 'lucide-react';
 import { format } from 'date-fns';
 import { toast } from 'sonner';
 
@@ -31,6 +31,8 @@ const MediaManagement: React.FC = () => {
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [mediaNameError, setMediaNameError] = useState<string>('');
   const [duplicateCheckTimeout, setDuplicateCheckTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [viewingMedia, setViewingMedia] = useState<{ url: string; name: string; type: string } | null>(null);
+  const [loadingMediaUrl, setLoadingMediaUrl] = useState<string | null>(null);
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -272,7 +274,14 @@ const MediaManagement: React.FC = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3001/api/download-media?userId=${client.user_id}&mediaId=${mediaItem.media_id}`, {
+      // Get original client credentials for API calls
+      const originalCredentials = await getOriginalClientCredentials();
+      if (!originalCredentials) {
+        toast.error('Unable to fetch client credentials');
+        return;
+      }
+
+      const response = await fetch(`http://localhost:3001/api/download-media?userId=${originalCredentials.user_id}&mediaId=${mediaItem.media_id}`, {
         method: 'GET'
       });
 
@@ -296,6 +305,59 @@ const MediaManagement: React.FC = () => {
       console.error('Error downloading media:', error);
       toast.error('Failed to download media. Please try again.');
     }
+  };
+
+  const handleViewMedia = async (mediaItem: any) => {
+    if (!client) {
+      toast.error('Client data not available');
+      return;
+    }
+
+    // Only show preview for images
+    if (mediaItem.media_type !== 'image') {
+      toast.info('Preview is only available for images');
+      return;
+    }
+
+    try {
+      setLoadingMediaUrl(mediaItem.media_id);
+      
+      // Get original client credentials for API calls
+      const originalCredentials = await getOriginalClientCredentials();
+      if (!originalCredentials) {
+        toast.error('Unable to fetch client credentials');
+        return;
+      }
+
+      const response = await fetch(`http://localhost:3001/api/download-media?userId=${originalCredentials.user_id}&mediaId=${mediaItem.media_id}`, {
+        method: 'GET'
+      });
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        setViewingMedia({
+          url: url,
+          name: mediaItem.name,
+          type: mediaItem.media_type
+        });
+      } else {
+        const data = await response.json();
+        toast.error(data.error || 'Failed to load media');
+      }
+    } catch (error) {
+      console.error('Error loading media:', error);
+      toast.error('Failed to load media. Please try again.');
+    } finally {
+      setLoadingMediaUrl(null);
+    }
+  };
+
+  const closeMediaViewer = () => {
+    if (viewingMedia?.url) {
+      window.URL.revokeObjectURL(viewingMedia.url);
+    }
+    setViewingMedia(null);
   };
 
   if (!client) {
@@ -561,6 +623,22 @@ const MediaManagement: React.FC = () => {
                   </Badge>
                 </div>
                 <div className="flex space-x-1">
+                  {mediaItem.media_type === 'image' && (
+                    <Button
+                      onClick={() => handleViewMedia(mediaItem)}
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 w-8 p-0"
+                      title="View image"
+                      disabled={loadingMediaUrl === mediaItem.media_id}
+                    >
+                      {loadingMediaUrl === mediaItem.media_id ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <Eye className="h-4 w-4" />
+                      )}
+                    </Button>
+                  )}
                   <Button
                     onClick={() => handleDownloadMedia(mediaItem)}
                     variant="ghost"
@@ -583,12 +661,37 @@ const MediaManagement: React.FC = () => {
               </div>
             </CardHeader>
             <CardContent className="space-y-3">
+              {/* Media Preview */}
+              {mediaItem.media_type === 'image' && (
+                <div className="relative w-full h-48 bg-gray-100 rounded-lg overflow-hidden border">
+                  {loadingMediaUrl === mediaItem.media_id ? (
+                    <div className="flex items-center justify-center h-full">
+                      <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+                    </div>
+                  ) : (
+                    <MediaPreview 
+                      mediaItem={mediaItem} 
+                      client={client}
+                      getOriginalClientCredentials={getOriginalClientCredentials}
+                    />
+                  )}
+                </div>
+              )}
+              {(mediaItem.media_type === 'document' || mediaItem.media_type === 'video' || mediaItem.media_type === 'audio') && (
+                <div className="relative w-full h-32 bg-gray-50 rounded-lg overflow-hidden border flex items-center justify-center">
+                  <div className="text-center">
+                    {getMediaTypeIcon(mediaItem.media_type)}
+                    <p className="text-xs text-muted-foreground mt-2">{mediaItem.media_type.toUpperCase()}</p>
+                  </div>
+                </div>
+              )}
+              
               <div>
                 <h3 className="font-semibold text-sm truncate" title={mediaItem.name}>
                   {mediaItem.name}
                 </h3>
                 {mediaItem.description && (
-                  <p className="text-xs text-muted-foreground mt-1">
+                  <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
                     {mediaItem.description}
                   </p>
                 )}
@@ -624,7 +727,113 @@ const MediaManagement: React.FC = () => {
           </CardContent>
         </Card>
       )}
+
+      {/* Media Viewer Dialog */}
+      {viewingMedia && (
+        <Dialog open={!!viewingMedia} onOpenChange={closeMediaViewer}>
+          <DialogContent className="max-w-4xl max-h-[90vh] p-0">
+            <div className="relative">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute top-2 right-2 z-10 bg-white/80 hover:bg-white"
+                onClick={closeMediaViewer}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+              {viewingMedia.type === 'image' && (
+                <div className="flex items-center justify-center bg-gray-100 p-4">
+                  <img
+                    src={viewingMedia.url}
+                    alt={viewingMedia.name}
+                    className="max-w-full max-h-[80vh] object-contain rounded-lg"
+                  />
+                </div>
+              )}
+              <div className="p-4 border-t">
+                <p className="text-sm font-medium">{viewingMedia.name}</p>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
+  );
+};
+
+// Media Preview Component
+const MediaPreview: React.FC<{
+  mediaItem: any;
+  client: any;
+  getOriginalClientCredentials: () => Promise<any>;
+}> = ({ mediaItem, client, getOriginalClientCredentials }) => {
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    let objectUrl: string | null = null;
+
+    const loadPreview = async () => {
+      try {
+        const originalCredentials = await getOriginalClientCredentials();
+        if (!originalCredentials) {
+          setError(true);
+          setLoading(false);
+          return;
+        }
+
+        const response = await fetch(
+          `http://localhost:3001/api/download-media?userId=${originalCredentials.user_id}&mediaId=${mediaItem.media_id}`,
+          { method: 'GET' }
+        );
+
+        if (response.ok) {
+          const blob = await response.blob();
+          objectUrl = window.URL.createObjectURL(blob);
+          setPreviewUrl(objectUrl);
+        } else {
+          setError(true);
+        }
+      } catch (err) {
+        console.error('Error loading preview:', err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPreview();
+
+    return () => {
+      if (objectUrl) {
+        window.URL.revokeObjectURL(objectUrl);
+      }
+    };
+  }, [mediaItem.media_id, getOriginalClientCredentials]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
+      </div>
+    );
+  }
+
+  if (error || !previewUrl) {
+    return (
+      <div className="flex items-center justify-center h-full text-gray-400">
+        <Image className="h-8 w-8" />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={previewUrl}
+      alt={mediaItem.name}
+      className="w-full h-full object-cover"
+    />
   );
 };
 
